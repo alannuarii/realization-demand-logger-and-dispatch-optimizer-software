@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <section class="har">
+      <div class="container-fluid">
+        <div class="row h-100">
+          <div class="d-flex justify-content-start align-items-center">
+            <div class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#modal-har">
+              <i class="bi-clipboard-plus" data-bs-toggle="tooltip" data-bs-placement="top" title="Input Har"></i>
+            </div>
+            <form action="" class="d-flex align-items-center">
+              <input type="date" name="tanggal" value="" onchange="this.form.submit()" />
+            </form>
+          </div>
+        </div>
+        <% if (dataHar.length < 1) { %>
+        <div class="alert alert-danger text-center mt-5" role="alert">Masukkan Tanggal Rencana Pemeliharaan</div>
+        <% } else {%>
+        <div class="row mt-3">
+          <div class="col-12">
+            <table class="table table-bordered text-center">
+              <tbody>
+                <tr>
+                  <th scope="col" class="align-middle">Nama Unit</th>
+                  <th scope="col" class="align-middle">Nama Mesin</th>
+
+                  <th scope="col">Jumat<br /><span class="fw-normal"></span></th>
+                  <th scope="col">Sabtu<br /><span class="fw-normal"></span></th>
+                  <th scope="col">Minggu<br /><span class="fw-normal"></span></th>
+                  <th scope="col">Senin<br /><span class="fw-normal"></span></th>
+                  <th scope="col">Selasa<br /><span class="fw-normal"></span></th>
+                  <th scope="col">Rabu<br /><span class="fw-normal"></span></th>
+                  <th scope="col">Kamis<br /><span class="fw-normal"></span></th>
+                </tr>
+              </tbody>
+              <tbody>
+                <th scope="row" rowspan="<%= pltahuna.length + 1 %>" class="align-middle">PLTD Tahuna</th>
+                <% pltahuna.forEach(thn => { %>
+                <tr>
+                  <td><%= thn.namaMesin %></td>
+                  <td><%= thn.jumat %></td>
+                  <td><%= thn.sabtu %></td>
+                  <td><%= thn.minggu %></td>
+                  <td><%= thn.senin %></td>
+                  <td><%= thn.selasa %></td>
+                  <td><%= thn.rabu %></td>
+                  <td><%= thn.kamis %></td>
+                </tr>
+                <% }) %>
+                <th scope="row" rowspan="<%= pltamako.length + 1 %>" class="align-middle">PLTD Tamako</th>
+                <% pltamako.forEach(tmk => { %>
+                <tr>
+                  <td><%= tmk.namaMesin %></td>
+                  <td><%= tmk.jumat %></td>
+                  <td><%= tmk.sabtu %></td>
+                  <td><%= tmk.minggu %></td>
+                  <td><%= tmk.senin %></td>
+                  <td><%= tmk.selasa %></td>
+                  <td><%= tmk.rabu %></td>
+                  <td><%= tmk.kamis %></td>
+                </tr>
+                <% }) %>
+                <th scope="row" rowspan="<%= pllesabe.length + 1 %>" class="align-middle">PLTD Lesabe</th>
+                <% pllesabe.forEach(lsb => { %>
+                <tr>
+                  <td><%= lsb.namaMesin %></td>
+                  <td><%= lsb.jumat %></td>
+                  <td><%= lsb.sabtu %></td>
+                  <td><%= lsb.minggu %></td>
+                  <td><%= lsb.senin %></td>
+                  <td><%= lsb.selasa %></td>
+                  <td><%= lsb.rabu %></td>
+                  <td><%= lsb.kamis %></td>
+                </tr>
+                <% }) %>
+                <th scope="row" rowspan="<%= plpetta.length + 1 %>" class="align-middle">PLTD Petta</th>
+                <% plpetta.forEach(ptt => { %>
+                <tr>
+                  <td><%= ptt.namaMesin %></td>
+                  <td><%= ptt.jumat %></td>
+                  <td><%= ptt.sabtu %></td>
+                  <td><%= ptt.minggu %></td>
+                  <td><%= ptt.senin %></td>
+                  <td><%= ptt.selasa %></td>
+                  <td><%= ptt.rabu %></td>
+                  <td><%= ptt.kamis %></td>
+                </tr>
+                <% }) %>
+                <th scope="row" rowspan="<%= plupel.length + 1 %>" class="align-middle">PLTM Upel</th>
+                <% plupel.forEach(upl => { %>
+                <tr>
+                  <td><%= upl.namaMesin %></td>
+                  <td><%= upl.jumat %></td>
+                  <td><%= upl.sabtu %></td>
+                  <td><%= upl.minggu %></td>
+                  <td><%= upl.senin %></td>
+                  <td><%= upl.selasa %></td>
+                  <td><%= upl.rabu %></td>
+                  <td><%= upl.kamis %></td>
+                </tr>
+                <% }) %>
+                <th scope="row" rowspan="<%= plsangihe.length + 1 %>" class="align-middle">PLTS Sangihe</th>
+                <% plsangihe.forEach(sgh => { %>
+                <tr>
+                  <td><%= sgh.namaMesin %></td>
+                  <td><%= sgh.jumat %></td>
+                  <td><%= sgh.sabtu %></td>
+                  <td><%= sgh.minggu %></td>
+                  <td><%= sgh.senin %></td>
+                  <td><%= sgh.selasa %></td>
+                  <td><%= sgh.rabu %></td>
+                  <td><%= sgh.kamis %></td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- Modal Upload Data-->
+      <div class="modal fade" id="modal-har" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Input Status Pemeliharaan</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="/har">
+                <div class="mb-3">
+                  <p class="d-inline me-2">Tanggal Mulai (Jumat)</p>
+                  <input type="date" class="d-inline" id="tglinp" name="tanggal" required />
+                  <input type="hidden" class="tglsabtu" name="tanggal" value="" />
+                  <input type="hidden" class="tglminggu" name="tanggal" value="" />
+                  <input type="hidden" class="tglsenin" name="tanggal" value="" />
+                  <input type="hidden" class="tglselasa" name="tanggal" value="" />
+                  <input type="hidden" class="tglrabu" name="tanggal" value="" />
+                  <input type="hidden" class="tglkamis" name="tanggal" value="" />
+                </div>
+
+                <table class="table table-bordered text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="align-middle">Nama Unit</th>
+                      <th scope="col" class="align-middle">Nama Mesin</th>
+
+                      <th scope="col">Jumat<br /><span class="fw-normal jumat"></span></th>
+                      <th scope="col">Sabtu<br /><span class="fw-normal sabtu"></span></th>
+                      <th scope="col">Minggu<br /><span class="fw-normal minggu"></span></th>
+                      <th scope="col">Senin<br /><span class="fw-normal senin"></span></th>
+                      <th scope="col">Selasa<br /><span class="fw-normal selasa"></span></th>
+                      <th scope="col">Rabu<br /><span class="fw-normal rabu"></span></th>
+                      <th scope="col">Kamis<br /><span class="fw-normal kamis"></span></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>
+                        <select class="form-select form-select-sm nama-unit" aria-label=".form-select-sm example" name="namaUnit" required>
+                          <option selected value="standby" disabled>Pilih Unit</option>
+                          <option value="PLTD Tahuna">PLTD Tahuna</option>
+                          <option value="PLTD Tamako">PLTD Tamako</option>
+                          <option value="PLTD Lesabe">PLTD Lesabe</option>
+                          <option value="PLTD Petta">PLTD Petta</option>
+                          <option value="PLTM Upel">PLTM Upel</option>
+                          <option value="PLTS Sangihe">PLTS Sangihe</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm nama-mesin" aria-label=".form-select-sm example" name="namaMesin" required>
+                          <option value=""></option>
+                        </select>
+                      </td>
+
+                      <script>
+                        const tahuna = <%- tahuna %>;
+                        const tamako = <%- tamako %>;
+                        const lesabe = <%- lesabe %>;
+                        const petta = <%- petta %>;
+                        const upel = <%- upel %>;
+                        const sangihe = <%- sangihe %>;
+                        const unitthn = <%- unitthn %>;
+                        const unittmk = <%- unittmk %>;
+                        const unitlsb = <%- unitlsb %>;
+                        const unitptt = <%- unitptt %>;
+                        const unitupl = <%- unitupl %>;
+                        const unitsgh = <%- unitsgh %>;
+                      </script>
+                      <td>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="jumat">
+                          <option selected value="standby">Standby</option>
+                          <option value="P1">P1</option>
+                          <option value="P2">P2</option>
+                          <option value="P3">P3</option>
+                          <option value="P4">P4</option>
+                          <option value="P5">P5</option>
+                          <option value="TO">TO</option>
+                          <option value="SO">SO</option>
+                          <option value="MO">MO</option>
+                          <option value="PdM">PdM</option>
+                          <option value="CM">CM</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="sabtu">
+                          <option selected value="standby">Standby</option>
+                          <option value="P1">P1</option>
+                          <option value="P2">P2</option>
+                          <option value="P3">P3</option>
+                          <option value="P4">P4</option>
+                          <option value="P5">P5</option>
+                          <option value="TO">TO</option>
+                          <option value="SO">SO</option>
+                          <option value="MO">MO</option>
+                          <option value="PdM">PdM</option>
+                          <option value="CM">CM</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="minggu">
+                          <option selected value="standby">Standby</option>
+                          <option value="P1">P1</option>
+                          <option value="P2">P2</option>
+                          <option value="P3">P3</option>
+                          <option value="P4">P4</option>
+                          <option value="P5">P5</option>
+                          <option value="TO">TO</option>
+                          <option value="SO">SO</option>
+                          <option value="MO">MO</option>
+                          <option value="PdM">PdM</option>
+                          <option value="CM">CM</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="senin">
+                          <option selected value="standby">Standby</option>
+                          <option value="P1">P1</option>
+                          <option value="P2">P2</option>
+                          <option value="P3">P3</option>
+                          <option value="P4">P4</option>
+                          <option value="P5">P5</option>
+                          <option value="TO">TO</option>
+                          <option value="SO">SO</option>
+                          <option value="MO">MO</option>
+                          <option value="PdM">PdM</option>
+                          <option value="CM">CM</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="selasa">
+                          <option selected value="standby">Standby</option>
+                          <option value="P1">P1</option>
+                          <option value="P2">P2</option>
+                          <option value="P3">P3</option>
+                          <option value="P4">P4</option>
+                          <option value="P5">P5</option>
+                          <option value="TO">TO</option>
+                          <option value="SO">SO</option>
+                          <option value="MO">MO</option>
+                          <option value="PdM">PdM</option>
+                          <option value="CM">CM</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="rabu">
+                          <option selected value="standby">Standby</option>
+                          <option value="P1">P1</option>
+                          <option value="P2">P2</option>
+                          <option value="P3">P3</option>
+                          <option value="P4">P4</option>
+                          <option value="P5">P5</option>
+                          <option value="TO">TO</option>
+                          <option value="SO">SO</option>
+                          <option value="MO">MO</option>
+                          <option value="PdM">PdM</option>
+                          <option value="CM">CM</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="kamis">
+                          <option selected value="standby">Standby</option>
+                          <option value="P1">P1</option>
+                          <option value="P2">P2</option>
+                          <option value="P3">P3</option>
+                          <option value="P4">P4</option>
+                          <option value="P5">P5</option>
+                          <option value="TO">TO</option>
+                          <option value="SO">SO</option>
+                          <option value="MO">MO</option>
+                          <option value="PdM">PdM</option>
+                          <option value="CM">CM</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="9"><button type="submit" class="btn btn-success">Simpan</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Akhir Modal Upload Data  -->
+    </section>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

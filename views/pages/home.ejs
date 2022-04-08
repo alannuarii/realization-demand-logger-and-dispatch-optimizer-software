@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <section class="home">
+      <div class="container-fluid">
+        <div class="row h-100">
+          <div class="col-3 position-relative">
+            <img src="public/img/grid.png" class="img-fluid mt-1" alt="" />
+            <form action="/" method="get">
+              <button type="submit" name="namaUnit" value="PLTD Tahuna"><img src="public/img/diesel.png" class="img-tahuna" alt="" /></button>
+            </form>
+            <form action="/" method="get">
+              <button type="submit" name="namaUnit" value="PLTS Sangihe"><img src="public/img/solar.png" class="img-sangihe" alt="" /></button>
+            </form>
+            <form action="/" method="get">
+              <button type="submit" name="namaUnit" value="PLTD Tamako"><img src="public/img/diesel.png" class="img-tamako" alt="" /></button>
+            </form>
+            <form action="/" method="get">
+              <button type="submit" name="namaUnit" value="PLTD Lesabe"><img src="public/img/diesel.png" class="img-lesabe" alt="" /></button>
+            </form>
+            <form action="/" method="get">
+              <button type="submit" name="namaUnit" value="PLTD Petta"><img src="public/img/diesel.png" class="img-petta" alt="" /></button>
+            </form>
+            <form action="/" method="get">
+              <button type="submit" name="namaUnit" value="PLTM Upel"><img src="public/img/hydro.png" class="img-upel" alt="" /></button>
+            </form>
+            <a href="/feeder"><img src="public/img/beban.png" class="img-beban" alt="" /></a>
+            <img src="public/img/converter.png" class="img-conv" alt="" />
+          </div>
+          <div class="col-5 ms-5 cta text-center overflow-auto">
+            <h3 class="fw-bolder mb-2"><%= dataMesin[0].namaUnit %></h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Unit</th>
+                  <th scope="col">Nama Mesin</th>
+                  <th scope="col">Daya Mampu</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% dataMesin.forEach(mesin => { %>
+                <tr>
+                  <th scope="row"><%= mesin.unit %></th>
+                  <td><%= mesin.namaMesin %></td>
+                  <td><%= mesin.dayaMampu %> kW</td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+            <div class="tri-btn">
+              <a href="" data-bs-toggle="modal" data-bs-target="#tambahdata"><i class="bi-plus-circle-fill" style="font-size: 30px" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Data"></i></a>
+              <a href="" data-bs-toggle="modal" data-bs-target="#hapusdata"><i class="bi-dash-circle-fill mx-3" style="font-size: 30px" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data"></i></a>
+              <a href="" data-bs-toggle="modal" data-bs-target="#editdata"><i class="bi-wrench-adjustable-circle-fill" style="font-size: 30px" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data"></i></a>
+            </div>
+          </div>
+          <div class="col-3 ms-5">
+            <div class="ctax">
+              <h3 class="fw-bolder mb-2 text-center">Cost</h3>
+              <label for="">Total Fixed Cost</label>
+              <input class="form-control form-control-sm mb-2" type="text" />
+              <label for="">Total Fixed Cost</label>
+              <input class="form-control form-control-sm mb-2" type="text" />
+              <label for="">Total Fixed Cost</label>
+              <input class="form-control form-control-sm mb-2" type="text" />
+              <label for="">Total Fixed Cost</label>
+              <input class="form-control form-control-sm mb-2" type="text" />
+              <label for="">Total Fixed Cost</label>
+              <input class="form-control form-control-sm mb-2" type="text" />
+              <label for="">Total Fixed Cost</label>
+              <input class="form-control form-control-sm mb-2" type="text" />
+            </div>
+            <div class="ctaxx mt-4">
+              <h3 class="fw-bolder mb-2 text-center">Koefisien Common</h3>
+              <label for="">Total Fixed Cost</label>
+              <input class="form-control form-control-sm mb-2" type="text" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal Tambah Data-->
+      <div class="modal fade" id="tambahdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Tambah Data Mesin</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="/">
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Unit</label>
+                  <div class="col-sm-9 d-flex">
+                    <input type="number" class="form-control" name="unit" required />
+                    <input type="hidden" name="namaUnit" value="<%= dataMesin[0].namaUnit %>" />
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Nama Mesin</label>
+                  <div class="col-sm-9 d-flex">
+                    <input type="text" class="form-control" name="namaMesin" required />
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label class="col-sm-3 col-form-label">Daya Mampu</label>
+                  <div class="col-sm-9 d-flex">
+                    <input type="number" class="form-control" name="dayaMampu" required />
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center"><input style="width: 200px" type="submit" class="btn btn-success" value="Kirim" /></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ahir Modal Tambah Data-->
+
+      <!-- Modal Hapus Data-->
+      <div class="modal fade" id="hapusdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Hapus Data Mesin</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="/home">
+                <table class="table text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col">Unit</th>
+                      <th scope="col">Nama Mesin</th>
+                      <th scope="col">Daya Mampu</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% dataMesin.forEach(del => { %>
+                    <tr>
+                      <th scope="row"><%= del.unit %></th>
+                      <td><%= del.namaMesin %></td>
+                      <td><%= del.dayaMampu %> kW</td>
+                      <td>
+                        <form action="?_method=DELETE" method="POST">
+                          <input type="hidden" name="_id" value="<%=del._id%>" />
+                          <button type="submit" class="btn" onclick="return confirm('Yakin gak lu?')"><i class="bi-trash3-fill text-danger" style="font-size: 16px"></i></button>
+                        </form>
+                      </td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ahir Modal Hapus Data-->
+
+      <!-- Modal Edit Data-->
+      <div class="modal fade" id="editdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update Data Mesin</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="/">
+                <table class="table text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col">Unit</th>
+                      <th scope="col">Nama Mesin</th>
+                      <th scope="col">Daya Mampu</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% dataMesin.forEach(updt => { %>
+                    <tr>
+                      <form action="?_method=PUT" method="post">
+                        <th scope="row"><input type="text" class="form-control" name="unit" value="<%= updt.unit %>" /></th>
+                        <td><input type="text" class="form-control" name="namaMesin" value="<%= updt.namaMesin %>" /></td>
+                        <td><input type="text" class="form-control" name="dayaMampu" value="<%= updt.dayaMampu %>" /></td>
+                        <input type="hidden" name="_id" value="<%=updt._id%>" />
+                        <td>
+                          <input type="submit" class="btn btn-success" onclick="return confirm('Yakin gak lu?')" value="Update" />
+                        </td>
+                      </form>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ahir Modal Edit Data-->
+    </section>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

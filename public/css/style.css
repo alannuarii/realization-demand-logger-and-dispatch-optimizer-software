@@ -1,0 +1,119 @@
+/* Halaman Home  */
+.home {
+  height: 100vh;
+  width: 100%;
+}
+
+.home .img-tahuna {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 25px;
+  top: 42px;
+  transition: all 0.3s ease-in-out;
+}
+
+.home .img-tamako {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 25px;
+  top: 148px;
+  transition: all 0.3s ease-in-out;
+}
+
+.home .img-lesabe {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 25px;
+  top: 253px;
+  transition: all 0.3s ease-in-out;
+}
+
+.home .img-petta {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 25px;
+  top: 360px;
+  transition: all 0.3s ease-in-out;
+}
+
+.home .img-beban {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 170px;
+  top: 42px;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.home .img-conv {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 170px;
+  top: 362px;
+  transition: all 0.3s ease-in-out;
+}
+
+.home .img-sangihe {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 315px;
+  top: 361px;
+  transition: all 0.3s ease-in-out;
+}
+
+.home .img-upel {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 24px;
+  top: 464px;
+  transition: all 0.3s ease-in-out;
+}
+
+.home .img-tahuna:hover,
+.home .img-tamako:hover,
+.home .img-lesabe:hover,
+.home .img-petta:hover,
+.home .img-upel:hover,
+.home .img-sangihe:hover,
+.home .img-beban:hover {
+  /* filter: grayscale(100%); */
+  cursor: pointer;
+  transform: scale(1.5);
+}
+
+.home a {
+  color: rgba(var(--color-secondary-dark-rgb), 0.7);
+}
+
+.home a:hover {
+  color: var(--color-primary);
+}
+
+.home button[type="submit"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.home .tri-btn {
+  position: absolute;
+  left: 690px;
+  bottom: 0px;
+}
+
+/* Halaman Feeder */
+.feeder .beban-feeder {
+  font-size: 12px;
+}

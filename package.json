@@ -1,0 +1,30 @@
+{
+  "name": "realization-demand-logger-and-dispatch-optimizer-software",
+  "version": "1.0.0",
+  "description": "Realization Demand Logger and Dispatch Optimizer Software",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Realization",
+    "Demand",
+    "Logger",
+    "and",
+    "Dispatch",
+    "Optimizer",
+    "Software"
+  ],
+  "author": "Alan Nuari",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.2.10",
+    "multer": "^1.4.4",
+    "xlsx": "^0.18.5"
+  }
+}
